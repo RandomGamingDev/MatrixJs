@@ -32,12 +32,25 @@ x
 // if there's a row in left combine all multiplied by the rows of the other
 
 //let test = new Matrix([3, 3]);
-let a_test = Matrix.fromList([
+let a_test = Matrix.fromList(
+  [
+    [1,2,3,4,1],
+    [8,5,6,7,2],
+    [9,12,10,11,3],
+    [13,14,16,15,4],
+    [10,8,6,4,2]
+  ]
+);
+/*
+Matrix.fromList([
   [1, 2, 3, 4],
   [5, 6, 7, 8],
   [9, 10, 11, 12],
   [13, 14, 15, 16],
 ]);
+*/
+
+console.log(a_test.det());
 
 console.log(a_test.slice([1, 1], [3, 3]).disp_str());
 
@@ -50,15 +63,10 @@ let b_test = Matrix.fromList([
   [7, 8, 9],
 ]);
 
-b_test.to_ref();
-console.log(b_test.disp_str());
-
 let test = Matrix.fromList([
   [1, 2],
   [3, 4],
 ]);
-console.log(test.disp_str());
-test.to_ref();
 console.log(test.disp_str());
 //console.log(test.getNum([0, 0]));
 let toMul = Matrix.fromList([

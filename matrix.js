@@ -87,31 +87,35 @@ class Matrix {
   recip() {
     return this.forEach((l, v, i) => 1 / v);
   }
-  
-  /*
-  to_ref() {
-    const dims = this.dims();
-    this.list[0].divNum(this.getNum([0, 0]));
-    for (let i = 0; i < Math.min(dims[0], dims[1] - 1); i++)
-      for (let j = 1 + i; j < dims[1]; j++) {
-        const toZero = this.getNum([i, j]);
-        const toMul = toZero / this.getNum([i, i]);
-        const toSub = this.list[i].copy().mulNum(toMul);
-        this.list[j].subVec(toSub);
-        console.log(`${ i }: ${ this.list[j].ind(0) }`);
-        this.list[j].divNum(this.getNum([i + 1, j]));
-      }
-  }
-  
-  
+
   det() {
     const dims = this.dims();
-    if (dims[0] != dims[1])
-      return;
-  }
+    const numCols = dims[1];
+    let calcMat = this.copy();
 
+    for (let fd = 0; fd < numCols; fd++)
+      for (let i = fd + 1; i < numCols; i++) {
+        if (calcMat.getNum([fd, fd]) == 0)
+          calcMat.setNum([fd, fd], 10**-18);
+        
+        const scaler = calcMat.getNum([fd, i]) / calcMat.getNum([fd, fd]);
+        const subRow = 
+          calcMat.getRow(fd).copy()
+            .mulNum(scaler)
+        
+        calcMat.getRow(i)
+          .subVec(subRow);
+      }
+
+    let product = 1;
+    for (let i = 0; i < numCols; i++)
+      product *= calcMat.getNum([i, i]);
+    return product;
+  }
+  
+  /* Not implemented yet
   inv() {
-    
+  
   }
   */
   
