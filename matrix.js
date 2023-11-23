@@ -90,14 +90,16 @@ class Matrix {
 
   det() {
     const dims = this.dims();
+    if (dims[0] != dims[1])
+      return;
+      
     const numCols = dims[1];
     let calcMat = this.copy();
 
-    for (let fd = 0; fd < numCols; fd++)
+    for (let fd = 0; fd < numCols; fd++) {
+      if (calcMat.getNum([fd, fd]) == 0)
+        calcMat.setNum([fd, fd], 10**-18);
       for (let i = fd + 1; i < numCols; i++) {
-        if (calcMat.getNum([fd, fd]) == 0)
-          calcMat.setNum([fd, fd], 10**-18);
-        
         const scaler = calcMat.getNum([fd, i]) / calcMat.getNum([fd, fd]);
         const subRow = 
           calcMat.getRow(fd).copy()
@@ -106,6 +108,7 @@ class Matrix {
         calcMat.getRow(i)
           .subVec(subRow);
       }
+    }
 
     let product = 1;
     for (let i = 0; i < numCols; i++)
@@ -113,7 +116,7 @@ class Matrix {
     return product;
   }
   
-  /* Not implemented yet
+  /*
   inv() {
   
   }
