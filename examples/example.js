@@ -37,12 +37,10 @@ console.log(mono_mat.disp_str());
 const iden_mat = Matrix.identity(3);
 console.log(iden_mat.disp_str());
 
-//console.log(iden_mat.inv());
-
 //let test = new Matrix([3, 3]);
 let a_test = Matrix.fromList(
   [
-    [1,2,3,4,1],
+    [0,2,3,4,1],
     [8,5,6,7,2],
     [9,12,10,11,3],
     [13,14,16,15,4],
@@ -58,7 +56,9 @@ Matrix.fromList([
 ]);
 */
 
-console.log(a_test.det());
+//console.log(a_test.inv());
+
+console.log(`determinant: ${ a_test.det() }`);
 
 console.log(a_test.slice([1, 1], [3, 3]).disp_str());
 

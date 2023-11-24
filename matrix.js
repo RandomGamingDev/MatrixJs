@@ -54,10 +54,10 @@ class Matrix {
   }
   
   getCol(x) {
-    let row = new Array(this.list.length);
+    let col = new Array(this.list.length);
     for (const i in this.list)
-      row[i] = this.getNum([x, i]);
-    return row;
+      col[i] = this.getNum([x, i]);
+    return col;
   }
   
   setCol(x, col) {
@@ -103,14 +103,27 @@ class Matrix {
     if (dims[0] != dims[1])
       return;
       
-    const numCols = dims[1];
+    const numRows = dims[1];
     let calcMat = this.copy();
 
     // Take this, make it calculate ref form and then rref from that
-    for (let fd = 0; fd < numCols; fd++) {
-      if (calcMat.getNum([fd, fd]) == 0)
-        calcMat.setNum([fd, fd], 10**-18);
-      for (let i = fd + 1; i < numCols; i++) {
+    let odd_swaps = false;
+    for (let fd = 0; fd < numRows; fd++) {
+      if (calcMat.getNum([fd, fd]) == 0) {
+        let found = false;
+        for (let i = fd + 1; i < numRows; i++)
+          if (calcMat.getNum([fd, i]) != 0) {
+            const temp = calcMat.getRow(fd);
+            calcMat.setRow(fd, calcMat.getRow(i));
+            calcMat.setRow(i, temp);
+            found = true;
+            odd_swaps = !odd_swaps;
+            break
+          }
+        if (!found)
+          return 0;
+      }
+      for (let i = fd + 1; i < numRows; i++) {
         const scaler = calcMat.getNum([fd, i]) / calcMat.getNum([fd, fd]);
         const subRow = 
           calcMat.getRow(fd).copy()
@@ -122,8 +135,10 @@ class Matrix {
     }
 
     let product = 1;
-    for (let i = 0; i < numCols; i++)
+    for (let i = 0; i < numRows; i++)
       product *= calcMat.getNum([i, i]);
+    if (odd_swaps)
+      product *= -1;
     return product;
   }
   
@@ -141,6 +156,9 @@ class Matrix {
     for (let fd = 0; fd < numCols; fd++) {
       if (calcMat.getNum([fd, fd]) == 0)
         calcMat.setNum([fd, fd], 10**-18);
+      
+      //calcMat.getRow(fd)
+        //.divNum(calcMat.getNum([fd, fd]));
       for (let i = fd + 1; i < numCols; i++) {
         const scaler = calcMat.getNum([fd, i]) / calcMat.getNum([fd, fd]);
         const subRow = 
@@ -149,8 +167,14 @@ class Matrix {
         
         calcMat.getRow(i)
           .subVec(subRow);
+        
+        for (let j = 0; j < i; j++)
+          calcMat.getRow(j)
+            .subVec(calcMat.getRow(i).mulNum(calcMat.getNum([fd, j])))
       }
     }
+    
+    console.log(calcMat.disp_str());
   }
   */
   
