@@ -18,10 +18,20 @@ class Matrix {
     return toReturn;
   }
   
-  static monoNum(num, dims) {
+  static mono(num, dims) {
      let list = new Array(dims[1]);
-     for (const i in list)
+     for (let i = 0; i < list.length; i++)
         list[i] = Vec.mono(num, dims[0]);
+    return Matrix.fromVList(list);
+  }
+  
+  static identity(size) {
+    let list = new Array(size);
+    for (let i = 0; i < list.length; i++) {
+      let row = new Vec(size);
+      row.setInd(i, 1);
+      list[i] = row;
+    }
     return Matrix.fromVList(list);
   }
   
@@ -96,6 +106,7 @@ class Matrix {
     const numCols = dims[1];
     let calcMat = this.copy();
 
+    // Take this, make it calculate ref form and then rref from that
     for (let fd = 0; fd < numCols; fd++) {
       if (calcMat.getNum([fd, fd]) == 0)
         calcMat.setNum([fd, fd], 10**-18);
@@ -118,7 +129,28 @@ class Matrix {
   
   /*
   inv() {
-  
+    // https://en.wikipedia.org/wiki/Invertible_matrix#Methods_of_matrix_inversion
+    const dims = this.dims();
+    if (dims[0] != dims[1])
+      return;
+      
+    const numCols = dims[1];
+    let calcMat = this.copy();
+
+    // Take this, make it calculate ref form and then rref from that
+    for (let fd = 0; fd < numCols; fd++) {
+      if (calcMat.getNum([fd, fd]) == 0)
+        calcMat.setNum([fd, fd], 10**-18);
+      for (let i = fd + 1; i < numCols; i++) {
+        const scaler = calcMat.getNum([fd, i]) / calcMat.getNum([fd, fd]);
+        const subRow = 
+          calcMat.getRow(fd).copy()
+            .mulNum(scaler)
+        
+        calcMat.getRow(i)
+          .subVec(subRow);
+      }
+    }
   }
   */
   
