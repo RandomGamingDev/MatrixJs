@@ -1,7 +1,7 @@
 # MatrixJs
 A basic javascript library for dynamic and powerful matrices based on lists wrapped around with a powerful class.
 
-This library interally deals with a matrix as a 2d list which can be obtained from `Matrix.list`. This is nice for dealing with libraries that use list vectors (including mine :D) without having to do any annoying casting, with u instead being able simply do `Matrix.list` to get the internal list. Not only that, but the fact that lists are used interally means that operations can be done on directly and that the class can be a lot more flexible. This library also prioritizes speed over accuracy.
+This library interally deals with a matrix as a 2d list which can be obtained from `Matrix.list`. This is nice for dealing with libraries that use list vectors (including mine :D) without having to do any annoying casting, with u instead being able simply do `Matrix.list` to get the internal list. Not only that, but the fact that lists are used interally means that operations can be done on directly and that the class can be a lot more flexible. This library also prioritizes speed & simplicity over getting the best accuracy.
 
 Note: Adding `inv()` & Strassen Matrix Multiplication (Strassen matrix multiplication is for larger matrices where the naive algorithm loses its advantage and I mean ***very*** big matrices) aren't done yet. The library was actually supposed to be released last year, but I had other stuff to do and couldn't find enough time to work on those (altho tbh a large part was just procrastination). However, the library is still highly usable in its current form and these & other features are things that I do plan on adding to the library.
 
