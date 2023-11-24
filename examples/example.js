@@ -31,6 +31,14 @@ x
 // inbetween numbers r the dimensions of the new matrix
 // if there's a row in left combine all multiplied by the rows of the other
 
+const mono_mat = Matrix.mono(1, [3, 3]);
+console.log(mono_mat.disp_str());
+
+const iden_mat = Matrix.identity(3);
+console.log(iden_mat.disp_str());
+
+//console.log(iden_mat.inv());
+
 //let test = new Matrix([3, 3]);
 let a_test = Matrix.fromList(
   [
