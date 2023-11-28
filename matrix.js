@@ -53,19 +53,6 @@ class Matrix {
     return this;
   }
   
-  getCol(x) {
-    let col = new Array(this.list.length);
-    for (const i in this.list)
-      col[i] = this.getNum([x, i]);
-    return col;
-  }
-  
-  setCol(x, col) {
-    for (const i in this.list)
-      this.list[i][x] = col[i];
-    return this;
-  }
-  
   dims() {
     return [this.list[0].length(), this.list.length];
   }
@@ -106,7 +93,6 @@ class Matrix {
     const numRows = dims[1];
     let calcMat = this.copy();
 
-    // Take this, make it calculate ref form and then rref from that
     let odd_swaps = false;
     for (let fd = 0; fd < numRows; fd++) {
       if (calcMat.getNum([fd, fd]) == 0) {
@@ -142,41 +128,81 @@ class Matrix {
     return product;
   }
   
-  /*
   inv() {
     // https://en.wikipedia.org/wiki/Invertible_matrix#Methods_of_matrix_inversion
     const dims = this.dims();
     if (dims[0] != dims[1])
       return;
       
-    const numCols = dims[1];
-    let calcMat = this.copy();
+    const numRows = dims[1];
+    let inv = Matrix.identity(numRows);
 
-    // Take this, make it calculate ref form and then rref from that
-    for (let fd = 0; fd < numCols; fd++) {
-      if (calcMat.getNum([fd, fd]) == 0)
-        calcMat.setNum([fd, fd], 10**-18);
-      
-      //calcMat.getRow(fd)
-        //.divNum(calcMat.getNum([fd, fd]));
-      for (let i = fd + 1; i < numCols; i++) {
-        const scaler = calcMat.getNum([fd, i]) / calcMat.getNum([fd, fd]);
-        const subRow = 
-          calcMat.getRow(fd).copy()
+    for (let fd = 0; fd < numRows; fd++) {
+      if (this.getNum([fd, fd]) == 0) {
+        let found = false;
+        for (let i = fd + 1; i < numRows; i++)
+          if (this.getNum([fd, i]) != 0) {
+            const cTemp = this.getRow(fd);
+            this.setRow(fd, this.getRow(i));
+            this.setRow(i, cTemp);
+            
+            const iTemp = inv.getRow(fd);
+            inv.setRow(fd, inv.getRow(i));
+            inv.setRow(i, iTemp);
+            
+            found = true;
+            break
+          }
+        if (!found)
+          return;
+      }
+      const pivot = this.getNum([fd, fd]);
+        
+      inv.getRow(fd)
+        .divNum(pivot);
+        
+      this.getRow(fd)
+        .divNum(pivot);
+      for (let i = fd + 1; i < numRows; i++) {
+        const scaler = this.getNum([fd, i]);
+        
+        const cSubRow = 
+          this.getRow(fd).copy()
             .mulNum(scaler)
         
-        calcMat.getRow(i)
-          .subVec(subRow);
+        this.getRow(i)
+          .subVec(cSubRow);
         
-        for (let j = 0; j < i; j++)
-          calcMat.getRow(j)
-            .subVec(calcMat.getRow(i).mulNum(calcMat.getNum([fd, j])))
+        const iSubRow =
+          inv.getRow(fd).copy()
+            .mulNum(scaler);
+        
+        inv.getRow(i)
+          .subVec(iSubRow);
       }
     }
     
-    console.log(calcMat.disp_str());
+    for (let fd = 0; fd < numRows; fd++) {
+      for (let i = 0; i < fd; i++) {
+        const pivot = this.getNum([fd, i]);
+        
+        const cSubRow =
+          this.getRow(fd).copy()
+            .mulNum(pivot);
+        this.getRow(i)
+          .subVec(cSubRow);
+        
+        const iSubRow =
+          inv.getRow(fd).copy()
+            .mulNum(pivot);
+        inv.getRow(i)
+          .subVec(iSubRow);
+      }
+    }
+      
+    this.list = inv.list;
+    return this;
   }
-  */
   
   transpose() {
     this.list = 

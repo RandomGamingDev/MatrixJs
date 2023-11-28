@@ -31,14 +31,18 @@ x
 // inbetween numbers r the dimensions of the new matrix
 // if there's a row in left combine all multiplied by the rows of the other
 
+/* activate
 const mono_mat = Matrix.mono(1, [3, 3]);
 console.log(mono_mat.disp_str());
 
 const iden_mat = Matrix.identity(3);
 console.log(iden_mat.disp_str());
+*/
 
 //let test = new Matrix([3, 3]);
-let a_test = Matrix.fromList(
+let a_test = Matrix.fromList([[-2,2,-3],[-1,1,3],[2,0,-1]]);
+    
+Matrix.fromList(
   [
     [0,2,3,4,1],
     [8,5,6,7,2],
@@ -56,7 +60,13 @@ Matrix.fromList([
 ]);
 */
 
-//console.log(a_test.inv());
+const a_inv = 
+  a_test.copy()
+    .inv();
+console.log("a_inv: ");
+console.log(a_inv.disp_str());
+console.log("a_test * a_inv: ");
+console.log(a_test.copy().mulMat(a_inv).disp_str());
 
 console.log(`determinant: ${ a_test.det() }`);
 
