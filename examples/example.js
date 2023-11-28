@@ -40,7 +40,7 @@ console.log(iden_mat.disp_str());
 */
 
 //let test = new Matrix([3, 3]);
-let a_test = Matrix.fromList([[-2,2,-3],[-1,1,3],[2,0,-1]]);
+let a_test = //Matrix.fromList([[-2,2,-3],[-1,1,3],[2,0,-1]]);
     
 Matrix.fromList(
   [
@@ -66,7 +66,8 @@ const a_inv =
 console.log("a_inv: ");
 console.log(a_inv.disp_str());
 console.log("a_test * a_inv: ");
-console.log(a_test.copy().mulMat(a_inv).disp_str());
+// We round here so that we don't have to worry about the floating point error
+console.log(a_test.copy().mulMat(a_inv).round().disp_str());
 
 console.log(`determinant: ${ a_test.det() }`);
 
