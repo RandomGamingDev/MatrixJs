@@ -113,7 +113,7 @@ class Matrix {
         const scaler = calcMat.getNum([fd, i]) / calcMat.getNum([fd, fd]);
         const subRow = 
           calcMat.getRow(fd).copy()
-            .mulNum(scaler)
+            .mulNum(scaler);
         
         calcMat.getRow(i)
           .subVec(subRow);
@@ -167,7 +167,7 @@ class Matrix {
         
         const cSubRow = 
           this.getRow(fd).copy()
-            .mulNum(scaler)
+            .mulNum(scaler);
         
         this.getRow(i)
           .subVec(cSubRow);
