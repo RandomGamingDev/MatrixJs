@@ -111,12 +111,10 @@ class Matrix {
       }
       for (let i = fd + 1; i < numRows; i++) {
         const scaler = calcMat.getNum([fd, i]) / calcMat.getNum([fd, fd]);
-        const subRow = 
-          calcMat.getRow(fd).copy()
-            .mulNum(scaler);
-        
-        calcMat.getRow(i)
-          .subVec(subRow);
+        for (let j = fd; j < numRows; j++)
+          calcMat.setNum([j, i],
+            calcMat.getNum([j, i]) - calcMat.getNum([j, fd]) * scaler
+          );
       }
     }
 
@@ -165,12 +163,10 @@ class Matrix {
       for (let i = fd + 1; i < numRows; i++) {
         const scaler = this.getNum([fd, i]);
         
-        const cSubRow = 
-          this.getRow(fd).copy()
-            .mulNum(scaler);
-        
-        this.getRow(i)
-          .subVec(cSubRow);
+        for (let j = fd; j < numRows; j++)
+          this.setNum([j, i],
+            this.getNum([j, i]) - this.getNum([j, fd]) * scaler
+          );
         
         const iSubRow =
           inv.getRow(fd).copy()
@@ -180,20 +176,20 @@ class Matrix {
           .subVec(iSubRow);
       }
     }
-    
-    for (let fd = 0; fd < numRows; fd++) {
+      
+    for (let fd = 1; fd < numRows; fd++) {
       for (let i = 0; i < fd; i++) {
-        const pivot = this.getNum([fd, i]);
+        const scaler = this.getNum([fd, i]);
         
         const cSubRow =
           this.getRow(fd).copy()
-            .mulNum(pivot);
+            .mulNum(scaler);
         this.getRow(i)
           .subVec(cSubRow);
-        
+
         const iSubRow =
           inv.getRow(fd).copy()
-            .mulNum(pivot);
+            .mulNum(scaler);
         inv.getRow(i)
           .subVec(iSubRow);
       }
