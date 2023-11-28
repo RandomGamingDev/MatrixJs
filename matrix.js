@@ -129,7 +129,6 @@ class Matrix {
   }
   
   inv() {
-    // https://en.wikipedia.org/wiki/Invertible_matrix#Methods_of_matrix_inversion
     const dims = this.dims();
     if (dims[0] != dims[1])
       return;
