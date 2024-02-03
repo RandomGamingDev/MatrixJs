@@ -1,7 +1,7 @@
 class Matrix {
   constructor(dims) {
     this.list = new Array(dims[1]);
-    for (const i in this.list)
+    for (let i = 0; i < dims[1]; i++)
         this.list[i] = new Vec(dims[0]);
   }
   
