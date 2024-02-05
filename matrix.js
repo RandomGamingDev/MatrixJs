@@ -243,23 +243,24 @@ class Matrix {
   }
   
   mulMat(matrix) {
-    if (this.dims()[1] != matrix.dims()[0])
+    const num_col = this.dims()[0];
+    const num_row = matrix.dims()[1];
+    if (num_col != num_row)
       return null;
     
-    const dims = this.dims();
-    const cacheList = this.copy();
+    const product_dims = [this.dims()[1], matrix.dims()[0]];
+    const product = new Matrix(product_dims);
     
-    for (let i = 0; i < dims[0]; i++) {
-        for (let j = 0; j < dims[1]; j++) {
+    for (let i = 0; i < product_dims[0]; i++) {
+        for (let j = 0; j < product_dims[1]; j++) {
             let num = 0;
-          
-            for (let k = 0; k < dims[1]; k++)
-              num += cacheList.getNum([k, j]) * matrix.getNum([i, k]);
-          
-            this.setNum([i, j], num);
+            for (let k = 0; k < num_col; k++)
+              num += this.getNum([k, j]) * matrix.getNum([i, k]);
+            product.setNum([i, j], num);
         }
     }
     
+    this.list = product.list;
     return this;
   }
   
@@ -298,3 +299,4 @@ class Matrix {
     return Matrix.fromVList(miniMat);
   }
 }
+
