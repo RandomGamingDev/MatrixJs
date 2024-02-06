@@ -45,8 +45,6 @@ class Matrix {
   }
   
   getNum(coord) {
-    //console.log(coord[1]);
-    //console.log(this.list);
     return this.list[coord[1]].ind(coord[0]);
   }
   
