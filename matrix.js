@@ -45,6 +45,8 @@ class Matrix {
   }
   
   getNum(coord) {
+    //console.log(coord[1]);
+    //console.log(this.list);
     return this.list[coord[1]].ind(coord[0]);
   }
   
@@ -251,12 +253,12 @@ class Matrix {
     const product_dims = [this.dims()[1], matrix.dims()[0]];
     const product = new Matrix(product_dims);
     
-    for (let i = 0; i < product_dims[0]; i++) {
-        for (let j = 0; j < product_dims[1]; j++) {
-            let num = 0;
+    for (let i = 0; i < product_dims[1]; i++) {
+        for (let j = 0; j < product_dims[0]; j++) {
+            let dot_product = 0;
             for (let k = 0; k < num_col; k++)
-              num += this.getNum([k, j]) * matrix.getNum([i, k]);
-            product.setNum([i, j], num);
+              dot_product += this.getNum([k, j]) * matrix.getNum([i, k]);
+            product.setNum([i, j], dot_product);
         }
     }
     
@@ -299,4 +301,3 @@ class Matrix {
     return Matrix.fromVList(miniMat);
   }
 }
-
