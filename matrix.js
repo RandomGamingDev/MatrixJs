@@ -248,15 +248,15 @@ class Matrix {
     if (num_col != num_row)
       return null;
     
-    const product_dims = [this.dims()[1], matrix.dims()[0]];
+    const product_dims = [matrix.dims()[0], this.dims()[1]];
     const product = new Matrix(product_dims);
     
-    for (let i = 0; i < product_dims[0]; i++) {
-        for (let j = 0; j < product_dims[1]; j++) {
+    for (let i = 0; i < product_dims[1]; i++) {
+        for (let j = 0; j < product_dims[0]; j++) {
             let dot_product = 0;
             for (let k = 0; k < num_col; k++)
               dot_product += this.getNum([k, i]) * matrix.getNum([j, k]);
-            product.setNum([i, j], dot_product);
+            product.setNum([j, i], dot_product);
         }
     }
     
