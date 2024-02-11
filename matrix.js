@@ -256,7 +256,7 @@ class Matrix {
             let dot_product = 0;
             for (let k = 0; k < num_col; k++)
               dot_product += this.getNum([k, i]) * matrix.getNum([j, k]);
-            product.setNum([i, j], dot_product);
+            product.setNum([j, i], dot_product);
         }
     }
     
