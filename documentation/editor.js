@@ -7,7 +7,7 @@ if (document.getElementById("editor") !== null) {
     editor.setTheme("ace/theme/monokai");
     editor.session.setMode("ace/mode/javascript");
 
-    fetch("EzDok/documentation/unit-test.js", { cache: "reload" })
+    fetch("https://cdn.jsdelivr.net/gh/RandomGamingDev/RandomGamingDev/MatrixJs@6301786d549d19f1f7eb572c6e1fdba133936a2e/documentation/unit-test.js", { cache: "reload" })
         .then((res) => res.text())
         .then((txt) => editor.setValue(txt));
 
