@@ -1,8 +1,8 @@
 ~
   "title": "MatrixJs",
   "description": "A basic yet powerful javascript library for dynamic and powerful matrices based on lists",
-  "libraries": ["https://cdn.jsdelivr.net/gh/RandomGamingDev/BasicUnitTesterJs@376d4dd9bed768f3f3f7a641cb5a157188e516d8/unit-tester.js", "https://cdnjs.cloudflare.com/ajax/libs/ace/1.32.5/ace.js", "https://github.com/RandomGamingDev/MatrixJs/blob/6301786d549d19f1f7eb572c6e1fdba133936a2e/documentation/logger-lib.js", "https://cdn.jsdelivr.net/gh/RandomGamingDev/VecJs@8b6cbf7f851fd0ba1a11f602031a2b2e06c3fecb/vec.js", "https://cdn.jsdelivr.net/gh/RandomGamingDev/MatrixJs@34772e38d3061f683b4eaf24ec6f3d6cb38b1ad9/matrix.js"],
-  "scripts": ["https://github.com/RandomGamingDev/MatrixJs/blob/6301786d549d19f1f7eb572c6e1fdba133936a2e/documentation/editor.js"]
+  "libraries": ["https://cdn.jsdelivr.net/gh/RandomGamingDev/BasicUnitTesterJs@376d4dd9bed768f3f3f7a641cb5a157188e516d8/unit-tester.js", "https://cdnjs.cloudflare.com/ajax/libs/ace/1.32.5/ace.js", "https://cdn.jsdelivr.net/gh/RandomGamingDev/MatrixJs@6301786d549d19f1f7eb572c6e1fdba133936a2e/documentation/logger-lib.js", "https://cdn.jsdelivr.net/gh/RandomGamingDev/VecJs@6301786d549d19f1f7eb572c6e1fdba133936a2e/vec.js", "https://cdn.jsdelivr.net/gh/RandomGamingDev/MatrixJs@6301786d549d19f1f7eb572c6e1fdba133936a2e/matrix.js"],
+  "scripts": ["https://cdn.jsdelivr.net/gh/RandomGamingDev/MatrixJs@6301786d549d19f1f7eb572c6e1fdba133936a2e/documentation/editor.js"]
 ~
 
 @ What's MatrixJs?
@@ -19,7 +19,7 @@ without having to manually copy and update the values each time you need them wh
 and readability of your code in many secnarios.
 The internal list also means that the class can be a lot more flexible and morph to fit your needs!
 
-### To use it, you can simply import it as a cdn from https://cdn.jsdelivr.net/gh/RandomGamingDev/MatrixJs@34772e38d3061f683b4eaf24ec6f3d6cb38b1ad9/matrix.js (add .min before .js for the minified version), import into your project, or copy and paste `matrix.js` into your editor (the dependencies have to be installed separately)!
+### To use it, you can simply import it as a cdn from https://cdn.jsdelivr.net/gh/RandomGamingDev/MatrixJs@6301786d549d19f1f7eb572c6e1fdba133936a2e/matrix.js (add .min before .js for the minified version), import into your project, or copy and paste `matrix.js` into your editor (the dependencies have to be installed separately)!
 ### Dependencies:
 - https://github.com/RandomGamingDev/VecJs
 
