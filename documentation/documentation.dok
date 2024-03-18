@@ -1,0 +1,152 @@
+~
+  "title": "MatrixJs",
+  "description": "A basic yet powerful javascript library for dynamic and powerful matrices based on lists",
+  "libraries": ["https://cdn.jsdelivr.net/gh/RandomGamingDev/BasicUnitTesterJs@376d4dd9bed768f3f3f7a641cb5a157188e516d8/unit-tester.js", "https://cdnjs.cloudflare.com/ajax/libs/ace/1.32.5/ace.js", "EzDok/documentation/logger-lib.js", "https://cdn.jsdelivr.net/gh/RandomGamingDev/VecJs@8b6cbf7f851fd0ba1a11f602031a2b2e06c3fecb/vec.js", "https://cdn.jsdelivr.net/gh/RandomGamingDev/MatrixJs@34772e38d3061f683b4eaf24ec6f3d6cb38b1ad9/matrix.js"],
+  "scripts": ["EzDok/documentation/editor.js"]
+~
+
+@ What's MatrixJs?
+# What's MatrixJs?
+### A basic javascript library for dynamic and powerful matrices based on lists wrapped around with a matrix class for the matrix operations you need
+This library interally deals with a matrix as a 2d list which can be obtained from `Matrix.list`.
+This is nice for dealing with libraries that use list based matrices or vectors (including mine :D)
+without having to do any annoying casting that not only makes the code harder to read,
+but often slows it down as well.
+Instead all you have to do is get `Matrix.list` to get the internal list.
+Not only that, but the fact that lists are used interally means that you can do things like give a reference
+to the list to another library like a physics API and then automatically get them to do calculations on it
+without having to manually copy and update the values each time you need them which increases the performance
+and readability of your code in many secnarios.
+The internal list also means that the class can be a lot more flexible and morph to fit your needs!
+
+### To use it, you can simply import it as a cdn from https://cdn.jsdelivr.net/gh/RandomGamingDev/MatrixJs@34772e38d3061f683b4eaf24ec6f3d6cb38b1ad9/matrix.js (add .min before .js for the minified version), import into your project, or copy and paste `matrix.js` into your editor (the dependencies have to be installed separately)!
+### Dependencies:
+- https://github.com/RandomGamingDev/VecJs
+
+@ Quickstart
+# Quickstart
+
+In order to start testing, you'll want to know how to use the library first! <br/>
+To do that you'll have to initialize a vector in the form of the `Matrix` class!
+```
+// This initializes a new 3x3 matrix
+const matrix = new Matrix([3, 3]);
+
+// This initializes a new matrix with a width of 2, height of 3, filled with the number 2
+const mono_matrix = Matrix.mono([2, 3], 2);
+
+// This initializes a 3x3 matrix filled with numbers, with each sub-list being a row of the matrix
+const from_list_matrix = Matrix.fromList(
+  [1, 2, 3],
+  [4, 5, 6],
+  [7, 8, 9]
+);
+
+// This initializes a 3x3 matrix filled with numbers, with each sub-vector being a row of the matrix
+const from_vlist_matrix = Matrix.fromList(
+  Vec.fromList([1, 2, 3]),
+  Vec.fromList([4, 5, 6]),
+  Vec.fromList([7, 8, 9])
+);
+
+// This initializes a 3x3 identity matrix
+const iden_mat = Matrix.identity(3);
+```
+
+Now that you've created the Matrix class you can start using it to do matrix operations (these are documented in the documentation for the `Matrix` class)!
+```
+const mat1 = Matrix.fromList(
+  [1, 2, 3],
+  [4, 5, 6],
+  [7, 8, 9]
+);
+const mat2 = Matrix.fromList(
+  [1, 2, 3],
+  [4, 5, 6],
+  [7, 8, 9]
+);
+
+// Here we multiply the 2 matrices (not element-wise)
+// This works for matrices of any size as long as their dimensions are valid for matrix multiplication
+const matrix_product = mat1.mulMat(mat2);
+
+// We can also easily debug by displaying the matrices using disp_str() to get a display string
+console.log(matrix_product.disp_str());
+/* Output: 
+30 36 42
+66 81 96
+102 126 150
+*/
+
+// And you can get each individual part of the vector like this:
+// Get a row (this gets the top row)
+console.log(vel.getRow(0));
+// Get a number (this gets the number in the top left)
+console.log(vel.getNum([0, 0]));
+```
+
+Another great thing is that since everything is managed with a list it's easy to interact with other libraries!
+```
+// If the function takes in a list you can do this
+some_random_function(vec.list);
+// If the function takes in a matrix as multiple parameters you can do this
+some_other_random_function(...vec.list);
+```
+
+### If you'd like to try out using this library before importing it, you can edit the unit test for this in the Unit Test section
+
+@ class Matrix
+# class Matrix
+
+## Constructor: This creates a vector filled with 0 of size `dims`
+#### Parameters:
+- dims: Integer[2],
+
+## Fields
+- #### list: Number[][] = The internal 2D list and core datastructure for storing the data
+
+## Non-Static Methods
+- #### ind(i: Integer[2]): Gets the value of index `i` from the matrix starting from the top left of the matrix
+- #### setInd(i: Integer): Set the value of index `i` for the matrix starting from the top left of the matrix
+- #### dims(): Returns the dimensions of the vector by width x height instead of height x width (aka nxm rather than mxn)
+- #### forEach(func: function): Calls a function for every element in the vector with the parameters (list: Number[][], element: Number, index: Integer[2])
+- #### getRow(y: Integer): Gets and returns the `y` row
+- #### setRow(y: Integer, row: Number[]): Sets the `y` row to `row`
+- #### abs(): Absolute value's every element of the matrix
+- #### floor(): Floor's every element of the matrix
+- #### ceil(): Ceil's every element of the matrix
+- #### round(): Round's every element of the matrix
+- #### recip(): Gets the reciprocal of every element of the matrix
+- #### det(): Gets the determinant of the matrix
+- #### inv(): Sets the matrix the inverse of itself
+- #### transpose(): Transposes the matrix
+- #### addMonoMat(num: Number): Adds `num` to every element of the matrix
+- #### subMonoMat(num: Number): Subtracts `num` from every element of the matrix
+- #### monoMatSub(num: Number): Subtracts each element of the matrix from `num` for each element's new value
+- #### mulNum(num: Number): Multiplies every element of the matrix by `num`
+- #### divNum(num: Number): Divides every element of the matrix by `num`
+- #### numDiv(num: Number): Divides `num` by each element of the matrix for each element's new value
+- #### addMat(matrix: Matrix): This adds each element of `matrix` to the corresponding element in the matrix this method is called from
+- #### subMat(matrix: Matrix): This subtracts each element of `matrix` to the corresponding element in the matrix this method is called from
+- #### mulMat(matrix: Matrix): This performs dot product matrix multiplication with the matrix the method is getting called from being on the left and `matrix` following on the right
+- #### equ(matrix: Matrix): This checks whether or not 2 matrices are equal in value
+- #### copy(): This copies the matrix and returns it
+- #### disp_str(): This returns a string displaying the matrix for debugging and display purposes
+- #### slice(start: Integer[2], end: Integer[2]): This creates a new matrix from a copied slice that starts at `start` (inclusive) and ends at `end` (exclusive)
+
+## Static Methods
+- #### fromList(list: Number[][]): This transforms the lists contained within the outer list into `Vec`s and then creates a new Matrix surrounding the `list` given which means that any modifications that happen to the matrix will happen to the list and vice versa
+- #### fromVList(list: Vec[]): This creates a new Matrix surrounding the `list` given which means that any modifications that happen to the matrix will happen to the list and vice versa
+- #### mono(num: Number, dims: Number[2]): This creates a new Vector filled with `num` of length `length`
+- #### identity(size): This creates a new Vector filled with `num` of length `length`
+
+@ Unit Test
+# Unit Test
+
+Here's a unit test for the unit tester using itself (feel free to edit and mess around with it)
+
+<button id="exec-button"></button>
+<div id="editor" style="height: 50em">Loading the Unit Test...</div>
+
+Console (the results can be seen in the Inspect Element console as well): 
+<div id="fake-console"></div>
