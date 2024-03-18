@@ -4,10 +4,10 @@
   "libraries": [
     "https://cdn.jsdelivr.net/gh/RandomGamingDev/BasicUnitTesterJs@376d4dd9bed768f3f3f7a641cb5a157188e516d8/unit-tester.js",
     "https://cdnjs.cloudflare.com/ajax/libs/ace/1.32.5/ace.js",
-    "https://cdn.jsdelivr.net/gh/RandomGamingDev/MatrixJs@13701acc583668a700dcba7527d4e10630f3a242/documentation/logger-lib.js",
+    "https://cdn.jsdelivr.net/gh/RandomGamingDev/MatrixJs@827926302083aa2e149496871df972fe5eea8f4a/documentation/logger-lib.js",
     "https://cdn.jsdelivr.net/gh/RandomGamingDev/VecJs@4d6c77af369a442eb89870c8ca731a93c78b2650/vec.js",
-    "https://cdn.jsdelivr.net/gh/RandomGamingDev/MatrixJs@13701acc583668a700dcba7527d4e10630f3a242/matrix.js"],
-  "scripts": ["https://cdn.jsdelivr.net/gh/RandomGamingDev/MatrixJs@13701acc583668a700dcba7527d4e10630f3a242/documentation/editor.js"]
+    "https://cdn.jsdelivr.net/gh/RandomGamingDev/MatrixJs@827926302083aa2e149496871df972fe5eea8f4a/matrix.js"],
+  "scripts": ["https://cdn.jsdelivr.net/gh/RandomGamingDev/MatrixJs@827926302083aa2e149496871df972fe5eea8f4a/documentation/editor.js"]
 ~
 
 @ What's MatrixJs?
@@ -24,7 +24,7 @@ without having to manually copy and update the values each time you need them wh
 and readability of your code in many secnarios.
 The internal list also means that the class can be a lot more flexible and morph to fit your needs!
 
-### To use it, you can simply import it as a cdn from https://cdn.jsdelivr.net/gh/RandomGamingDev/MatrixJs@13701acc583668a700dcba7527d4e10630f3a242/matrix.js (add .min before .js for the minified version), import into your project, or copy and paste `matrix.js` into your editor (the dependencies have to be installed separately)!
+### To use it, you can simply import it as a cdn from https://cdn.jsdelivr.net/gh/RandomGamingDev/MatrixJs@827926302083aa2e149496871df972fe5eea8f4a/matrix.js (add .min before .js for the minified version), import into your project, or copy and paste `matrix.js` into your editor (the dependencies have to be installed separately)!
 ### Dependencies:
 - https://github.com/RandomGamingDev/VecJs
 
