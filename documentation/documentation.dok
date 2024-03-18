@@ -1,7 +1,12 @@
 ~
   "title": "MatrixJs",
   "description": "A basic yet powerful javascript library for dynamic and powerful matrices based on lists",
-  "libraries": ["https://cdn.jsdelivr.net/gh/RandomGamingDev/BasicUnitTesterJs@376d4dd9bed768f3f3f7a641cb5a157188e516d8/unit-tester.js", "https://cdnjs.cloudflare.com/ajax/libs/ace/1.32.5/ace.js", "https://cdn.jsdelivr.net/gh/RandomGamingDev/MatrixJs@6301786d549d19f1f7eb572c6e1fdba133936a2e/documentation/logger-lib.js", "https://cdn.jsdelivr.net/gh/RandomGamingDev/VecJs@4d6c77af369a442eb89870c8ca731a93c78b2650/vec.js", "https://cdn.jsdelivr.net/gh/RandomGamingDev/MatrixJs@6301786d549d19f1f7eb572c6e1fdba133936a2e/matrix.js"],
+  "libraries": [
+    "https://cdn.jsdelivr.net/gh/RandomGamingDev/BasicUnitTesterJs@376d4dd9bed768f3f3f7a641cb5a157188e516d8/unit-tester.js",
+    "https://cdnjs.cloudflare.com/ajax/libs/ace/1.32.5/ace.js",
+    "https://cdn.jsdelivr.net/gh/RandomGamingDev/MatrixJs@6301786d549d19f1f7eb572c6e1fdba133936a2e/documentation/logger-lib.js",
+    "https://cdn.jsdelivr.net/gh/RandomGamingDev/VecJs@4d6c77af369a442eb89870c8ca731a93c78b2650/vec.js",
+    "https://cdn.jsdelivr.net/gh/RandomGamingDev/MatrixJs@6301786d549d19f1f7eb572c6e1fdba133936a2e/matrix.js"],
   "scripts": ["https://cdn.jsdelivr.net/gh/RandomGamingDev/MatrixJs@6301786d549d19f1f7eb572c6e1fdba133936a2e/documentation/editor.js"]
 ~
 
