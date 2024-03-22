@@ -7,7 +7,7 @@
     "https://cdn.jsdelivr.net/gh/RandomGamingDev/MatrixJs@827926302083aa2e149496871df972fe5eea8f4a/documentation/logger-lib.js",
     "https://cdn.jsdelivr.net/gh/RandomGamingDev/VecJs@4d6c77af369a442eb89870c8ca731a93c78b2650/vec.js",
     "https://cdn.jsdelivr.net/gh/RandomGamingDev/MatrixJs@827926302083aa2e149496871df972fe5eea8f4a/matrix.js"],
-  "scripts": ["https://cdn.jsdelivr.net/gh/RandomGamingDev/MatrixJs@827926302083aa2e149496871df972fe5eea8f4a/documentation/editor.js"]
+  "scripts": ["https://cdn.jsdelivr.net/gh/RandomGamingDev/MatrixJs@b4a3d1cea9430d92673a4255a39bdcb98ba67861/documentation/editor.js"]
 ~
 
 @ What's MatrixJs?
