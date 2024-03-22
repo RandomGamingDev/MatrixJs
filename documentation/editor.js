@@ -7,7 +7,7 @@ if (document.getElementById("editor") !== null) {
     editor.setTheme("ace/theme/monokai");
     editor.session.setMode("ace/mode/javascript");
 
-    fetch("https://cdn.jsdelivr.net/gh/RandomGamingDev/RandomGamingDev/MatrixJs@827926302083aa2e149496871df972fe5eea8f4a/documentation/unit-test.js", { cache: "reload" })
+    fetch("https://cdn.jsdelivr.net/gh/RandomGamingDev/RandomGamingDev/MatrixJs@b4a3d1cea9430d92673a4255a39bdcb98ba67861/documentation/unit-test.js", { cache: "reload" })
         .then((res) => res.text())
         .then((txt) => editor.setValue(txt));
 
