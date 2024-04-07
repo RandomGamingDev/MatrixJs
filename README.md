@@ -1,6 +1,8 @@
 # MatrixJs
 A basic javascript library for dynamic and powerful matrices based on lists wrapped around with a powerful class.
 
+<img src="MatrixJs.png" width="256"/>
+
 Documentation is available here: https://randomgamingdev.github.io/EzDok/#v1/%22https://raw.githubusercontent.com/RandomGamingDev/MatrixJs/main/documentation/documentation.dok%22/0/
 
 An example is available here: https://github.com/RandomGamingDev/MatrixJs/blob/main/matrix.js
